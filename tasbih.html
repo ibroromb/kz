@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тасбих</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="tasbih.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+        .tasbih-container {
+            background-color: #1d672c;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            display: none;
+        }
+        .tasbih-button {
+            background-color: #1d672c;
+            color: white;
+            font-size: 24px;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        .tasbih-button:hover {
+            background-color: #14501e;
+            transform: scale(1.1);
+        }
+        .count {
+            font-size: 32px;
+            margin-top: 10px;
+        }
+        .menu-button {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 15px;
+            font-size: 20px;
+            color: white;
+            background-color: #1d672c;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        .menu-button:hover {
+            background-color: #14501e;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Тасбих</h1>
+
+    <!-- Меню выбора -->
+    <button class="menu-button" onclick="showTasbih('subhanallah')">СубханАллах</button>
+    <button class="menu-button" onclick="showTasbih('alhamdulillah')">Альхамдулиллях</button>
+    <button class="menu-button" onclick="showTasbih('allahuakbar')">Аллаху Акбар</button>
+
+    <!-- Счетчик СубханАллах -->
+    <div class="tasbih-container" id="subhanallah">
+        <h2>СубханАллах</h2>
+        <p class="count" id="count-subhanallah">0</p>
+        <button class="tasbih-button" onclick="increaseCount('subhanallah')">Нажмите</button>
+    </div>
+
+    <!-- Счетчик Альхамдулиллях -->
+    <div class="tasbih-container" id="alhamdulillah">
+        <h2>Альхамдулиллях</h2>
+        <p class="count" id="count-alhamdulillah">0</p>
+        <button class="tasbih-button" onclick="increaseCount('alhamdulillah')">Нажмите</button>
+    </div>
+
+    <!-- Счетчик Аллаху Акбар -->
+    <div class="tasbih-container" id="allahuakbar">
+        <h2>Аллаху Акбар</h2>
+        <p class="count" id="count-allahuakbar">0</p>
+        <button class="tasbih-button" onclick="increaseCount('allahuakbar')">Нажмите</button>
+    </div>
+
+    <br>
+    <a href="index.html">Назад</a>
+
+    <script>
+        let counts = {
+            subhanallah: 0,
+            alhamdulillah: 0,
+            allahuakbar: 0
+        };
+
+        function showTasbih(type) {
+            document.getElementById("subhanallah").style.display = "none";
+            document.getElementById("alhamdulillah").style.display = "none";
+            document.getElementById("allahuakbar").style.display = "none";
+
+            document.getElementById(type).style.display = "block";
+        }
+
+        function increaseCount(type) {
+            counts[type]++;
+            document.getElementById("count-" + type).innerText = counts[type];
+        }
+    </script>
+
+</body>
+</html>
